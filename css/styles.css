@@ -41,6 +41,7 @@
   --backdrop: rgba(0, 0, 0, 0.2);
   --works-background: rgba(47, 48, 58, 0.8);
   --portfolio-animationbcg: rgba(33, 150, 243, 0.9);
+  --input-border: rgba(33, 33, 33, 0.2);
   /* Другое */
   --items: 3;
   --indent: 30px;
@@ -275,7 +276,111 @@ header > .container {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
     opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal > .close-button {
+.modal label {
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.modal label:nth-last-child(3) {
+  margin-bottom: 20px;
+}
+.modal label:last-of-type {
+  margin-bottom: 30px;
+}
+.modal-text {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+.input-description {
+  display: block;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  color: var(--subtext-color);
+  text-align: left;
+  margin-bottom: 4px;
+}
+.modal-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  padding-left: 42px;
+  padding-right: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-input:focus {
+  border-color: var(--focus-color);
+}
+.modal-input:focus + .modal-icon {
+  fill: var(--focus-color);
+}
+textarea.modal-input {
+  height: 120px;
+  padding: 12px 16px;
+  letter-spacing: 0.01em;
+  font-size: inherit;
+  line-height: inherit;
+  resize: none;
+}
+.modal-icon {
+  position: absolute;
+  left: 12px;
+  bottom: 11px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+form .agreement {
+  display: flex;
+  align-items: center;
+}
+.agreement-text {
+  display: inline-block;
+  line-height: 1.71;
+  margin-left: 23px;
+}
+.icon-agreement {
+  position: absolute;
+  left: 0;
+}
+.icon-check {
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.icon-checkbox {
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.agreement-check:checked ~ .icon-agreement .icon-check {
+  opacity: 1;
+}
+.agreement-check:checked ~ .icon-agreement .icon-checkbox {
+  opacity: 0;
+}
+.send-button {
+  width: 200px;
+  height: 50px;
+  background-color: var(--focus-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border-color: var(--focus-color);
+  color: var(--maintext-color);
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.send-button:focus {
+  background-color: var(--focus-btnclr);
+}
+.close-button {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -287,6 +392,10 @@ header > .container {
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: var(--mainbcg-color);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close-button:focus {
+  fill: var(--focus-btnclr);
 }
 
 /* 2.2.2 Преимущества */
@@ -507,7 +616,9 @@ address {
 .contacts-footer:focus {
   color: var(--focus-color);
 }
-
+.second-section-footer {
+  margin-right: 93px;
+}
 .connect {
   display: inline-block;
   font-weight: 700;
@@ -544,6 +655,52 @@ address {
 }
 .connect-icon {
   fill: currentColor;
+}
+.subscribe-fields {
+  display: inline-flex;
+}
+.subscribe {
+  height: 50px;
+  width: 358px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background-color: var(--herofootbcg-color);
+  padding: 15px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--maintext-color);
+  outline: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.subscribe:focus {
+  border-color: var(--mainbcg-color);
+}
+.subscribe-button {
+  width: 200px;
+  height: 50px;
+  margin-left: 12px;
+  display: inline-flex;
+  background-color: var(--focus-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  color: var(--maintext-color);
+  border-color: var(--focus-color);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.subscribe-button:focus {
+  background-color: var(--focus-btnclr);
+}
+.subscribe-button span {
+  line-height: 0;
+  margin-left: 10px;
+  fill: var(--maintext-color);
 }
 
 /* 3. Страница портфолио */
