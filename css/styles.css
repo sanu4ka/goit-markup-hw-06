@@ -258,7 +258,7 @@ header > .container {
   opacity: 0;
 }
 .modal {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   left: 50%;
@@ -338,29 +338,44 @@ textarea.modal-input {
 form .agreement {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .agreement-text {
   display: inline-block;
   line-height: 1.71;
   margin-left: 23px;
 }
+.agreement-link {
+  text-decoration-line: underline;
+  color: var(--focus-color);
+}
 .icon-agreement {
   position: absolute;
-  left: 0;
+  left: 12px;
+}
+.icon-checkbox {
+  display: inline-block;
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 15px;
+  border: 2px solid var(--text-color);
+  border-radius: 2px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon-check {
   opacity: 0;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.icon-checkbox {
-  opacity: 1;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-origin: border-box;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .agreement-check:checked ~ .icon-agreement .icon-check {
   opacity: 1;
+  fill: var(--maintext-color);
 }
-.agreement-check:checked ~ .icon-agreement .icon-checkbox {
-  opacity: 0;
+.agreement-check:checked ~ .icon-checkbox {
+  background-color: var(--focus-color);
+  border-color: var(--focus-color);
 }
 .send-button {
   width: 200px;
@@ -374,10 +389,12 @@ form .agreement {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
+  border: none;
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.send-button:focus {
+.send-button:focus,
+.send-button:hover {
   background-color: var(--focus-btnclr);
 }
 .close-button {
@@ -392,9 +409,11 @@ form .agreement {
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: var(--mainbcg-color);
+  cursor: pointer;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.close-button:focus {
+.close-button:focus,
+.close-button:hover {
   fill: var(--focus-btnclr);
 }
 
@@ -617,10 +636,10 @@ address {
   color: var(--focus-color);
 }
 .second-section-footer {
-  margin-right: 93px;
+  margin-right: auto;
 }
 .connect {
-  display: inline-block;
+  display: block;
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
@@ -673,6 +692,7 @@ address {
   outline: none;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.subscribe:hover,
 .subscribe:focus {
   border-color: var(--mainbcg-color);
 }
@@ -694,6 +714,7 @@ address {
   justify-content: center;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.subscribe-button:hover,
 .subscribe-button:focus {
   background-color: var(--focus-btnclr);
 }
